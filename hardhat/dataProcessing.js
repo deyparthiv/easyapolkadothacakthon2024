@@ -64,3 +64,33 @@ function processTransactionList(transList, tokenInfo, address) {
         UpdateTokenInfo(transaction, tokenInfo,address);
     }
 }
+function extractStats(tokenInfo) {
+    var average = 0;
+    var overAllBuys = 0;
+    
+    const pnl = [];
+    var overallPnl = 0;
+    
+    average = Object.keys(tokenInfo).length;
+    
+    for (const info of tokenInfo) {
+        //median time held
+        average += info.holdingTimes[ Math.floor(info.numTrades / 2)];
+        
+        pnl.push({name: info.name, pnlAbs: info.totalSell-info.totalBuy, pnlRatio: info.totalSell/info.totalBuy})
+        //weighted pnl
+        overallPnl = (info.totalSell-info.totalBuy) * (info.totalSell/info.totalBuy);
+        
+        overAllBuys += info.totalBuys;
+    }
+    average = average / Object.keys(tokenInfo).length;
+    
+    overallPnl = overallPnl/overAllBuys
+    const stats = {avgHoldingTime: average, pnl: overallPnl,tokenPerformance: pnl}
+    return stats
+}
+    
+
+// Output: User found: { name: 'Bob', age: 25, city: 'San Francisco' }
+
+//}
