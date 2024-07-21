@@ -1,0 +1,174 @@
+{% load static %}
+<html>
+    <head>
+        <title>Index</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <script src="{% static 'hardhat/apiConnect.js' %}"></script>
+        <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <style>
+            html{
+                
+                background-color: black;
+                color:white;
+            }
+
+            * {
+                font-family: "Courier Prime", monospace;
+            }
+
+            input:focus{
+                outline: none;
+            }
+
+            hr {
+                border: none;
+                border-top: 4px dashed rgb(213, 213, 213);
+                color: #fff;
+                height: 1px;
+                width: 100%;
+            }
+
+            td {
+                text-align: center;
+            }
+        </style>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="w-full relative [background:radial-gradient(50%_50%_at_50%_50%,_rgba(56,_56,_56,_0.4),_rgba(0,_0,_0,_0.4)),_#000] h-[1024px] overflow-hidden leading-[normal] tracking-[normal]" style="margin:0px;padding:50px;">
+        <div style="height:10vh;width:100%;margin-top:10px;">
+            <div style="width:10%;float: left;">
+                <img src="{% static 'logo.png' %}" style="width:100%;height:100%">
+            </div>  
+            <div style="width:70%;float:left;height:100%;display: flex;align-items: center;justify-content: center;">
+                <div style="border-radius:20px;box-shadow: 0px 0px 15px #fff;width:90%;height:70%;display: flex;align-items: center;justify-content: center;">
+                    <input id="searchText" type="text" style="border: 0px solid;background: none;width:90%;height:90%;color:darkgray;font-size: 30px;" placeholder="Input wallet">
+                    <image src="{% static 'magnifying-glass.png' %}" style="width:5%;cursor: pointer;" id="searchBarSubmit">
+                </div>
+            </div>
+            <div style="width:20%;float:right;height:100%;display: flex;align-items: center;justify-content: center;">add wallet</div>
+        </div>
+        <div style="height:75vh;width:100%;margin-top:10px;">
+            <div style="width:20%;float: left;">
+                <div style="width:100%;margin-bottom:10px; height:30%;border:1px solid darkgray;border-radius: 10px;">
+                    <div style="width:100%;margin-bottom: 10px;display: flex;align-items: center;justify-content: center;margin-top:10px;">
+                        <div style="height:15px;border-radius: 7.5px;border:1px solid #454545; width:15%;margin-right:10px;float: left;font-size: 8px;text-align: center;vertical-align: middle;line-height: 15px;">Day</div>
+                        <div style="height:15px;border-radius: 7.5px;border:1px solid #454545; width:15%;margin-right:10px;float: left;font-size: 8px;text-align: center;vertical-align: middle;line-height: 15px;">Week</div>
+                        <div style="height:15px;border-radius: 7.5px;border:1px solid #454545; width:15%;margin-right:10px;float: left;font-size: 8px;text-align: center;vertical-align: middle;line-height: 15px;">Month</div>
+                        <div style="height:15px;border-radius: 7.5px;border:1px solid #454545; width:15%;margin-right:10px;float: left;font-size: 8px;text-align: center;vertical-align: middle;line-height: 15px;">3 Months</div>
+                        <div style="height:15px;border-radius: 7.5px;border:1px solid #454545; width:15%;margin-right:10px;float: left;font-size: 8px;text-align: center;vertical-align: middle;line-height: 15px;">Max</div>
+                    </div>
+                </div>
+                <div style="width:100%;height:70%;border:1px solid darkgray;border-radius: 10px;padding:10px;">
+                    <h3 style="color:#606060">Wallets Tracked</h3>
+                    <hr/>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1NmeWYoSssrGmFZtbfkRLG7VXW8QJc4e7D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-1" style="font-weight:normal;">1</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1HFA65znRhmtjdusx3ffBxCDSVwLZAzRH2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-2" style="font-weight:normal;">4</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1PasyNKvV8P4Kb5jABFJMUsmg3X4zuPqqN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-3" style="font-weight:normal;">3</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1Fsi3f8vXimR67c7S92zyjN4C8E4DVCuTC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-4" style="font-weight:normal;">1</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">19KKPbcoR7mPUifvQJoKwAauYBLT62CRob&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-5" style="font-weight:normal;">1</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1B8M7Jv8Q9Pzkf4mXXNwRgsrrgkgYsHjNa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-6" style="font-weight:normal;">8</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1DkvTHncyaAq9nqXeBZRVMAoVcUwkHEVPA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-7" style="font-weight:normal;">1</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1B3V2M9JFuh9EwyGRgC9hYLuVpVKZeAxfG&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-8" style="font-weight:normal;">7</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">14TjPUZiFS53Ra7b3YLkkAb4gWa6WV4U5c&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-9" style="font-weight:normal;">1</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1MmoXtQxDtVpiTzxRu7phiGYmbpViWPHjx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-10" style="font-weight:normal;">2</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1KKbKCQfMGm5ZmbhrsoiUCJk7cmYpivj1D&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-11" style="font-weight:normal;">5</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1EGuUocHD6bfVutf8sg41PQFoxdpwSv9BX&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-12" style="font-weight:normal;">1</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1Jkkv2cKUn6XhBxE9ZzLW1PvaY7Yt8Qef &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-13" style="font-weight:normal;">3</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1ALNtrGPPp9pGDymepC9CqVfJzgmbG1i7p&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-14" style="font-weight:normal;">1</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1FtS3BotNiekKmsuSgrj1NG21RvpBQ3WS9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-15" style="font-weight:normal;">1</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1Cd56hhUWTV15MHBNvR37kcJEGpyHHqWcM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-16" style="font-weight:normal;">15</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1NequN3jve2PoEWQY5hV9kNipxstFF5TLn&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-17" style="font-weight:normal;">6</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1En6RFfweWvc7NEwwXcR4CZAZWbtNzavTF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-18" style="font-weight:normal;">1</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1PPxCofzbKiFcoJidkZBHw8od4ebewFt9N&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-19" style="font-weight:normal;">6</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">18h6P3p5knztnz9SAHHAwN1y4bAkmzLBTo&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-20" style="font-weight:normal;">1</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1DY7vttc9gDdKGSMGCWvsJLYv2sv4a4oUW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-21" style="font-weight:normal;">7</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1po1a9nvBdB1o9ny9kWFrqtdbPenp3mGK &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-22" style="font-weight:normal;">21</span></span>
+                    <span style="font-size:8px;font-weight: bold;line-height:12px;">1Ca4WQWLX3tzZ2kVAc7e6BzsWDnmyxsufF&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="numstore" id="num-23" style="font-weight:normal;">1</span></span>
+                </div>
+            </div>  
+            <div style="width:60%;float: left;border:1px solid darkgray;border-radius: 10px;height: 100%;margin-left:10px;">
+                <table style="width:100%;height:100%">
+                    <thead>
+                        <th>#Queries</th>
+                        <th>win rate (%)</th>
+                        <th>PnL $</th>
+                        <th>PnL x</th>
+                        <th>volume</th>
+                        <th>median time held</th>
+                        <th># token transfers</th>
+                    </thead>
+                    <tbody id="mainTableBody">
+
+                    </tbody>
+                </table>
+            </div>
+            <div style="width:15%;float: left;border:1px solid darkgray;border-radius: 10px;height: 100%;margin-left:10px;padding:10px;">
+                <h3 style="color:#606060">Filters</h3>
+                <div style="width:100%">
+                    <b>#Queries: </b>&nbsp;
+                    <b>Min win rate:</b>&nbsp;
+                </div>
+                <button style="border-radius:5px;background:yellow;color:black;padding:5px;margin-left: auto;">Submit</button>
+            </div>
+        </div>
+        <script>
+
+            function sameDay(d1, d2) {
+            return d1.getFullYear() === d2.getFullYear() &&
+                d1.getMonth() === d2.getMonth() &&
+                d1.getDate() === d2.getDate();
+            }
+            
+            constwalletPerformanceData=[{queries:4,winRate:57,pnlDollar:1200,pnlMultiplier:1.2,volume:5000,medianTime:3600,tokenTransfers:5},{queries:6,winRate:65,pnlDollar:-450,pnlMultiplier:0.5,volume:15000,medianTime:5400,tokenTransfers:7},{queries:2,winRate:80,pnlDollar:3000,pnlMultiplier:2.5,volume:8000,medianTime:4200,tokenTransfers:3},{queries:5,winRate:50,pnlDollar:0,pnlMultiplier:1.0,volume:2000,medianTime:6000,tokenTransfers:4},{queries:7,winRate:72,pnlDollar:2500,pnlMultiplier:2.0,volume:12000,medianTime:4800,tokenTransfers:8},{queries:3,winRate:45,pnlDollar:-700,pnlMultiplier:0.3,volume:10000,medianTime:3600,tokenTransfers:6},{queries:8,winRate:90,pnlDollar:4000,pnlMultiplier:3.0,volume:30000,medianTime:3600,tokenTransfers:10},{queries:4,winRate:38,pnlDollar:-1200,pnlMultiplier:0.1,volume:5000,medianTime:7200,tokenTransfers:2},{queries:9,winRate:85,pnlDollar:3500,pnlMultiplier:2.8,volume:22000,medianTime:5400,tokenTransfers:12},{queries:1,winRate:50,pnlDollar:100,pnlMultiplier:1.1,volume:1100,medianTime:3600,tokenTransfers:1},{queries:6,winRate:75,pnlDollar:2750,pnlMultiplier:2.2,volume:9000,medianTime:4800,tokenTransfers:9},{queries:10,winRate:60,pnlDollar:500,pnlMultiplier:1.5,volume:7000,medianTime:6000,tokenTransfers:11},{queries:5,winRate:40,pnlDollar:-1500,pnlMultiplier:0.2,volume:14000,medianTime:7200,tokenTransfers:4},{queries:3,winRate:67,pnlDollar:1300,pnlMultiplier:1.8,volume:6000,medianTime:5400,tokenTransfers:7},{queries:7,winRate:82,pnlDollar:3200,pnlMultiplier:2.7,volume:18000,medianTime:4800,tokenTransfers:8},{queries:2,winRate:55,pnlDollar:600,pnlMultiplier:1.3,volume:1200,medianTime:6000,tokenTransfers:2},{queries:9,winRate:73,pnlDollar:2900,pnlMultiplier:2.1,volume:23000,medianTime:5400,tokenTransfers:9},{queries:1,winRate:45,pnlDollar:-300,pnlMultiplier:0.5,volume:1500,medianTime:3600,tokenTransfers:1},{queries:4,winRate:62,pnlDollar:800,pnlMultiplier:1.4,volume:4000,medianTime:4800,tokenTransfers:5},{queries:6,winRate:88,pnlDollar:3700,pnlMultiplier:2.9,volume:10000,medianTime:6000,tokenTransfers:10},{queries:8,winRate:34,pnlDollar:-1000,pnlMultiplier:0.2,volume:9000,medianTime:3600,tokenTransfers:6},{queries:3,winRate:79,pnlDollar:3100,pnlMultiplier:2.5,volume:7000,medianTime:5400,tokenTransfers:7},{queries:10,winRate:54,pnlDollar:400,pnlMultiplier:1.2,volume:13000,medianTime:7200,tokenTransfers:11},{queries:5,winRate:65,pnlDollar:1500,pnlMultiplier:1.7,volume:8000,medianTime:6000,tokenTransfers:4},{queries:2,winRate:50,pnlDollar:-500,pnlMultiplier:0.8,volume:1000,medianTime:3600,tokenTransfers:3},{queries:7,winRate:92,pnlDollar:4500,pnlMultiplier:3.0,volume:25000,medianTime:4800,tokenTransfers:9},{queries:4,winRate:38,pnlDollar:-900,pnlMultiplier:0.4,volume:5000,medianTime:5400,tokenTransfers:5},{queries:6,winRate:70,pnlDollar:2100,pnlMultiplier:2.0,volume:11000,medianTime:6000,tokenTransfers:8},{queries:1,winRate:45,pnlDollar:-100,pnlMultiplier:0.7,volume:1300,medianTime:7200,tokenTransfers:2},{queries:9,winRate:86,pnlDollar:3800,pnlMultiplier:2.6,volume:19000,medianTime:3600,tokenTransfers:10}];
+            document.addEventListener('DOMContentLoaded', () => {
+                for(var i=0;i<constwalletPerformanceData.length;i++){
+                    var curr = constwalletPerformanceData[i];
+                    const node = document.createElement("tr");
+                    const query = document.createElement("td");
+                    const winrate = document.createElement("td");
+                    const pnld = document.createElement("td");
+                    const pnlx = document.createElement("td");
+                    const vol = document.createElement("td");
+                    const med = document.createElement("td");
+                    const tokentransfers = document.createElement("td");
+                    const qnode = document.createTextNode(curr.queries);
+                    query.appendChild(qnode);
+                    node.appendChild(query);
+                    const wnode = document.createTextNode(curr.winRate);
+                    winrate.appendChild(wnode);
+                    node.appendChild(winrate);
+                    const pdnode = document.createTextNode(curr.pnlDollar);
+                    pnld.appendChild(pdnode);
+                    node.appendChild(pnld);
+                    const pxnode = document.createTextNode(curr.pnlMultiplier);
+                    pnlx.appendChild(pxnode);
+                    node.appendChild(pnlx);
+                    const vnode = document.createTextNode(curr.volume);
+                    vol.appendChild(vnode);
+                    node.appendChild(vol);
+                    const mnode = document.createTextNode(curr.medianTime);
+                    med.appendChild(mnode);
+                    node.appendChild(med);
+                    const tnode = document.createTextNode(curr.tokenTransfers);
+                    tokentransfers.appendChild(tnode);
+                    node.appendChild(tokentransfers);
+                    document.getElementById("mainTableBody").appendChild(node);
+                }
+                document.getElementById('searchBarSubmit').addEventListener('click', async () => {
+                    console.log("Hello");
+                    result = await getTokenTransferEventsByAddress(document.getElementById("searchText").value);
+                    console.log(result);
+                    currDate = new Date();
+                    for(var i=0;i<result.length;i++){
+                        var newTime = new Date(0);
+                        newTime.setSeconds(result[i].timeStamp);
+                        if(sameDay(currDate,newTime)){
+                            console.log(result[i]);
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
