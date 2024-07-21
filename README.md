@@ -1,106 +1,36 @@
 # easyapolkadothacakthon2024
+# Wallet Performance Tracker
 
-https://docs.google.com/document/d/1gQJI4iW81HoaGtsQupa-LyThuUfqvHixZkkzUaOAvco/edit
+Wallet Performance Tracker is a web application that tracks the performance of cryptocurrency wallets. By passing in a wallet address, the application analyzes the performance, calculates the Profit and Loss (PNL) using USD values from the CoinMarketCap API, and tracks PNL of trades on tokens within the Moonbeam parachain. The application parses JSON output from the Moonbeam API using JavaScript and displays all information via a Django-based UI.
 
+## Features
 
-function createTokenEntry(name, val, lastBuyTime) {
-    const tokenInfo = 
-        {name: name, numTrades : 0, count_transactions : 1, timeHeld : 0, holdingTimes : []}
-        if (lastBuyTime === undefined) {
-            tokenInfo["lastWasBuy"] = false;
-            tokenInfo["lastBuyTradeTime"] = null;
-            tokenInfo["lastBuy"] = 0;
-            tokenInfo["totalBuy"] = 0;
-            tokenInfo["totalSell"] = val;
-        } else {
-            tokenInfo["lastWasBuy"] = true;
-            tokenInfo["lastBuyTradeTime"] = lastBuyTime;
-            tokenInfo["lastBuy"] = val;
-            tokenInfo["totalBuy"] = val;
-            tokenInfo["totalSell"] = 0;
-        }
-        return tokenInfo;
-    }
-}
-function UpdateTokenInfo(transInfo, tokenInfo,address) {
-    const val = getValueAtTime(transInfo.timeStamp, transInfo.value);
-    
-    const info = tokenInfo.find(info => info.tokenName === transInfo.tokenName);
-    if (info) {
-        info.count_transactions++;
-        if (info.lastWasBuy) {
-            if (!isBuy(address, transInfo)){
-                info.totalSell += val;
-                info.lastWasBuy = false;
-                info.timeHeld += transInfo.timeStamp;
-                info.numTrades ++;
-            } else {
-                info.lastBuyTradeTime = transInfo.timeStamp;
-                info.lastBuy = val;
-                info.totalBuy += val;
-            }
-        } else {
-            if (!isBuy(address, transInfo)){
-                info.totalSell += val;
-                insertInOder(info.holdingTimes, info.timeHeld);
-                info.timeHeld = 0; // reset
-                info.timeHeld += transInfo.timeStamp;
-            } else {
-                info.lastWasBuy = true;
-                info.lastBuyTradeTime = transInfo.timeStamp;
-                info.lastBuy = val;
-                info.totalBuy += val;
-        }
-    } else {
-        if (isBuy(address, transInfo)) {
-            createToken(transInfo.tokenName, val, transInfo.timeStamp);
-        } else {
-            createTokenEntry(transInfo.tokenName, val);
-        }
-    }
-    
-function processTransactionList(transList, tokenInfo, address) {
-    for (const transaction of transList) {
-        UpdateTokenInfo(transaction, tokenInfo,address);
-    }
-}
+- Track and analyze wallet performance by inputting a wallet address
+- Calculate PNL using USD values from CoinMarketCap API
+- Track PNL of trades on Moonbeam parachain tokens
+- Parse and display transaction history from the Moonbeam API
+- Django-based user interface to display all relevant wallet information
+- Future versions: Use smart contracts to mirror successful trades
 
+## Technologies Used
 
+- **Backend**: Django, Python
+- **Frontend**: HTML, CSS, JavaScript
+- **API Integrations**: CoinMarketCap API, Moonbeam API
+- **Smart Contracts**: Solidity (for future versions)
+- **HTTP Client**: Axios
 
+## Installation
 
+### Prerequisites
 
+- Python 3.8+
+- Node.js and npm
+- Django
+- Axios (for HTTP requests)
 
-function extractStats(tokenInfo) {
-    var average = 0;
-    var overAllBuys = 0;
-    
-    const pnl = [];
-    var overallPnl = 0;
-    
-    average = Object.keys(tokenInfo).length;
-    
-    for (const info of tokenInfo) {
-        //median time held
-        average += info.holdingTimes[ Math.floor(info.numTrades / 2)];
-        
-        pnl.push({name: info.name, pnlAbs: info.totalSell-info.totalBuy, pnlRatio: info.totalSell/info.totalBuy})
-        //weighted pnl
-        overallPnl = (info.totalSell-info.totalBuy) * (info.totalSell/info.totalBuy);
-        
-        overAllBuys += info.totalBuys;
-    }
-    average = average / Object.keys(tokenInfo).length;
-    
-    overallPnl = overallPnl/overAllBuys
-    
-    const stats = {avgHoldingTime: average, pnl: overallPnl}
-    return stats
-}
-    
+### Clone the Repository
 
-// Output: User found: { name: 'Bob', age: 25, city: 'San Francisco' }
-
-}
-
-function isBuy(address, transInfo) {
-}
+```bash
+git clone https://github.com/deyparthiv/easyapolkadothacakthon2024.git
+cb easyapolkadothacakthon2024
